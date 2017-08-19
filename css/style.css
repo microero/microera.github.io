@@ -4748,6 +4748,9 @@ pre .link_url {
 #uyan_comment {
   color: #2c602f !important;
 }
+.uyan_weight_item a {
+  color: #282828 !important;
+}
 .inner1 {
   margin: 0 40px;
 }
