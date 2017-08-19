@@ -4737,13 +4737,13 @@ pre .link_url {
 .youyan {
   padding: 20px 40px;
 }
-.uyan_cmt_txt {
-  color: #303030 !important;
-}
 @media (max-width: 767px) {
   .youyan {
     padding: 20px 10px;
   }
+}
+#uyan_frame {
+  background: #303030;
 }
 .inner1 {
   margin: 0 40px;
