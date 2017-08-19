@@ -4743,7 +4743,7 @@ pre .link_url {
   }
 }
 .uyan_cmt_txt {
-  font-size: 17px !important;
+  color: #303030 !important;
 }
 #uyan_comment {
   color: #2c602f !important;
@@ -4758,7 +4758,16 @@ pre .link_url {
   font-size: 15px !important;
 }
 #uyan_frame {
-  background: #303030;
+  background: #2c602f;
+}
+#uyan_femail_show {
+  color: #2c602f !important;
+}
+#uyan_uvon {
+  color: #2c602f !important;
+}
+#uyan_uacn {
+  color: #2c602f !important;
 }
 .inner1 {
   margin: 0 40px;
