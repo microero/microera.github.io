@@ -4749,7 +4749,10 @@ pre .link_url {
   color: #2c602f !important;
 }
 .uyan_weight_item a {
-  color: #303030 !important;
+  color: #2c602f !important;
+}
+.uyan_weight_item a {
+  color: #2c602f !important;
 }
 .uyan_cmt_exp a {
   color: #303030 !important;
@@ -4758,7 +4761,7 @@ pre .link_url {
   font-size: 15px !important;
 }
 #uyan_frame {
-  background: #2c602f;
+  background: #366;
 }
 #uyan_femail_show {
   color: #2c602f !important;
