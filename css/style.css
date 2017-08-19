@@ -4745,6 +4745,9 @@ pre .link_url {
 .uyan_cmt_txt {
   font-size: 17px !important;
 }
+#uyan_comment {
+  color: #2c602f !important;
+}
 .inner1 {
   margin: 0 40px;
 }
