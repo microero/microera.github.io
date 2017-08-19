@@ -4757,6 +4757,9 @@ pre .link_url {
 #uyan_newcmt_unit div {
   font-size: 15px !important;
 }
+#uyan_frame {
+  background: #303030;
+}
 .inner1 {
   margin: 0 40px;
 }
