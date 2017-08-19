@@ -4742,8 +4742,8 @@ pre .link_url {
     padding: 20px 10px;
   }
 }
-#uyan_frame {
-  background: #303030;
+.uyan_cmt_txt {
+  font-size: 17px !important;
 }
 .inner1 {
   margin: 0 40px;
