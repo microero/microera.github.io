@@ -362,11 +362,15 @@
 
 <nav id="article-nav">
   
-  
-    <a href="/2017/08/02/欢迎来到我的博客/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">欢迎来到我的个人博客</div>
-      <strong class="article-nav-caption">></strong>
+    <a href="/2017/08/02/欢迎来到我的博客/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          欢迎来到我的个人博客
+        
+      </div>
     </a>
+  
   
 </nav>
 
@@ -426,7 +430,16 @@
 <script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>
 <script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cysIa2Flb"></script>
 <!-- 代码2：用来读取评论框配置，此代码需放置在代码1之后。 -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142008"></script>
 <!-- 如果当前页面有评论框，代码2请勿放置在评论框代码之前。 -->
+<!--PC和WAP自适应版-->
+<div id="SOHUCS" sid="<?php echo $this->item->id;?>"></div>
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cysIa2Flb'; 
+var conf = 'prod_d0d97540ce3a1087d0d9e19a9a7297a2'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
 <!-- 如果页面同时使用多个实验室项目，以下代码只需要引入一次，只配置上面的div标签即可 -->
 <!-- 代码2：用来读取评论框配置，此代码需放置在代码1之后。 -->
 <!-- 如果当前页面有评论框，代码2请勿放置在评论框代码之前。 -->
@@ -444,16 +457,16 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2017/08/02/欢迎来到我的博客/" title="上一篇: 欢迎来到我的个人博客">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/08/02/欢迎来到我的博客/" title="下一篇: 欢迎来到我的个人博客">
-                <i class="fa fa-angle-right"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/WinFprm中DataGridView控件的使用/">WinFprm中DataGridView控件的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/欢迎来到我的博客/">欢迎来到我的个人博客</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/欢迎来到我的博客/">欢迎来到我的个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/WinFprm中DataGridView控件的使用/">WinFprm中DataGridView控件的使用</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
