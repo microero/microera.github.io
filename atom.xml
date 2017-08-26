@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/child/"/>
-  <updated>2017-08-26T11:27:57.352Z</updated>
+  <updated>2017-08-26T11:32:10.547Z</updated>
   <id>http://yoursite.com/child/</id>
   
   <author>
@@ -20,9 +20,15 @@
     <link href="http://yoursite.com/child/2017/08/26/JAVA/"/>
     <id>http://yoursite.com/child/2017/08/26/JAVA/</id>
     <published>2017-08-26T11:19:13.000Z</published>
-    <updated>2017-08-26T11:27:57.352Z</updated>
+    <updated>2017-08-26T11:32:10.547Z</updated>
+    
+    <content type="html"><![CDATA[<p>我也不知道怎么回事博客就是不行，也不知道怎么了，汉字都不能正常显示！！！！</p>
+]]></content>
     
     <summary type="html">
+    
+      &lt;p&gt;我也不知道怎么回事博客就是不行，也不知道怎么了，汉字都不能正常显示！！！！&lt;/p&gt;
+
     
     </summary>
     
