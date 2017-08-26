@@ -148,7 +148,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/C/" style="font-size: 20px;">C#</a> <a href="/tags/Combobox控件/" style="font-size: 10px;">Combobox控件</a> <a href="/tags/ExcelHelper/" style="font-size: 13.33px;">ExcelHelper</a> <a href="/tags/SqlHelper/" style="font-size: 10px;">SqlHelper</a> <a href="/tags/TreeView控件/" style="font-size: 13.33px;">TreeView控件</a> <a href="/tags/WinForm/" style="font-size: 16.67px;">WinForm</a> <a href="/tags/Winfrom/" style="font-size: 10px;">Winfrom</a> <a href="/tags/E����/" style="font-size: 10px;">Ȩ����</a> <a href="/tags/控件/" style="font-size: 16.67px;">控件</a> <a href="/tags/权限树/" style="font-size: 13.33px;">权限树</a> <a href="/tags/简介/" style="font-size: 10px;">简介</a>
+                        <a href="/tags/C/" style="font-size: 20px;">C#</a> <a href="/tags/Combobox控件/" style="font-size: 10px;">Combobox控件</a> <a href="/tags/ExcelHelper/" style="font-size: 10px;">ExcelHelper</a> <a href="/tags/SqlHelper/" style="font-size: 10px;">SqlHelper</a> <a href="/tags/TreeView控件/" style="font-size: 13.33px;">TreeView控件</a> <a href="/tags/WinForm/" style="font-size: 16.67px;">WinForm</a> <a href="/tags/Winfrom/" style="font-size: 10px;">Winfrom</a> <a href="/tags/控件/" style="font-size: 16.67px;">控件</a> <a href="/tags/权限树/" style="font-size: 13.33px;">权限树</a> <a href="/tags/简介/" style="font-size: 10px;">简介</a>
                     </div>
                 </section>
                 
@@ -230,6 +230,64 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-C-SqlHelper" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/08/26/C-SqlHelper/" class="article-date">
+      <time datetime="2017-08-26T11:45:29.000Z" itemprop="datePublished">2017-08-26</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/26/C-SqlHelper/">C#-SqlHelper</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div></pre></td><td class="code"><pre><div class="line">class SqlHelper</div><div class="line">   &#123;</div><div class="line">       public static readonly string dbConnStr = ConfigurationManager.ConnectionStrings[&quot;dbConnStr&quot;].ConnectionString;</div><div class="line"></div><div class="line">       //增删改  操作</div><div class="line">       public static int ExecuteNonQuery(string sql, params SqlParameter[] parameters)</div><div class="line">       &#123;</div><div class="line"></div><div class="line">           using (SqlConnection conn = new SqlConnection(dbConnStr))</div><div class="line">           &#123;</div><div class="line">               conn.Open();</div><div class="line">               using (SqlCommand cmd = conn.CreateCommand())</div><div class="line">               &#123;</div><div class="line">                   cmd.CommandText = sql;</div><div class="line">                   if (null != parameters)</div><div class="line">                   &#123;</div><div class="line">                       cmd.Parameters.AddRange(parameters);</div><div class="line">                   &#125;</div><div class="line">                   return cmd.ExecuteNonQuery();</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       //查询 操作</div><div class="line">       public static object ExecuteScalar(string sql, params SqlParameter[] parameters)</div><div class="line">       &#123;</div><div class="line">           using (SqlConnection conn = new SqlConnection(dbConnStr))</div><div class="line">           &#123;</div><div class="line">               conn.Open();</div><div class="line">               using (SqlCommand cmd = conn.CreateCommand())</div><div class="line">               &#123;</div><div class="line">                   cmd.CommandText = sql;</div><div class="line">                   if (null != parameters)</div><div class="line">                   &#123;</div><div class="line">                       cmd.Parameters.AddRange(parameters);</div><div class="line">                   &#125;</div><div class="line"></div><div class="line">                   return cmd.ExecuteScalar();</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       //查询结果少的sql  </div><div class="line">       public static DataTable ExecuteDataTable(string sql, params SqlParameter[] parameters)</div><div class="line">       &#123;</div><div class="line">           using (SqlConnection conn = new SqlConnection(dbConnStr))</div><div class="line">           &#123;</div><div class="line">               conn.Open();</div><div class="line">               using (SqlCommand cmd = conn.CreateCommand())</div><div class="line">               &#123;</div><div class="line">                   cmd.CommandText = sql;</div><div class="line">                   if (null != parameters)</div><div class="line">                   &#123;</div><div class="line">                       cmd.Parameters.AddRange(parameters);</div><div class="line">                   &#125;</div><div class="line"></div><div class="line">                   SqlDataAdapter adapter = new SqlDataAdapter(cmd);</div><div class="line">                   DataSet dataSet = new DataSet();</div><div class="line">                   adapter.Fill(dataSet);</div><div class="line">                   return dataSet.Tables[0];</div><div class="line">                  </div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line"></div><div class="line">       &#125;</div><div class="line"></div><div class="line">       //查询结果少的sql  </div><div class="line">       public static DataSet ExecuteDataSet(string sql,SqlParameter[] parameters,String cls)</div><div class="line">       &#123;</div><div class="line">           using (SqlConnection conn = new SqlConnection(dbConnStr))</div><div class="line">           &#123;</div><div class="line">               conn.Open();</div><div class="line">               using (SqlCommand cmd = conn.CreateCommand())</div><div class="line">               &#123;</div><div class="line">                   cmd.CommandText = sql;</div><div class="line">                   if (null != parameters)</div><div class="line">                   &#123;</div><div class="line">                       cmd.Parameters.AddRange(parameters);</div><div class="line">                   &#125;</div><div class="line"></div><div class="line">                   SqlDataAdapter adapter = new SqlDataAdapter(cmd);</div><div class="line">                   DataSet dataSet = new DataSet();</div><div class="line">                   adapter.Fill(dataSet, cls);</div><div class="line">                   //  return dataSet.Tables[0];</div><div class="line">                   return dataSet;</div><div class="line"></div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line"></div><div class="line">       &#125;</div><div class="line"></div><div class="line">       public static object FromDbValue(object value)</div><div class="line">       &#123;</div><div class="line">           if (value == DBNull.Value)</div><div class="line">           &#123;</div><div class="line">               return null;</div><div class="line">           &#125;</div><div class="line">           else</div><div class="line">           &#123;</div><div class="line">               return value;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       public static object ToDbValue(object value)</div><div class="line">       &#123;</div><div class="line">           if (value == null)</div><div class="line">           &#123;</div><div class="line">               return DBNull.Value;</div><div class="line">           &#125;</div><div class="line">           else</div><div class="line">           &#123;</div><div class="line">               return value;</div><div class="line">           &#125;</div><div class="line">       &#125;</div></pre></td></tr></table></figure>
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SqlHelper/">SqlHelper</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-C-Excel导出" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -394,195 +452,6 @@
       
 
       
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-C#-Excel导出" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/08/25/C#-Excel导出/" class="article-date">
-      <time datetime="2017-08-25T04:16:46.000Z" itemprop="datePublished">2017-08-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/25/C#-Excel导出/">Excel�ĵ�����ExcelHelper��ʹ��</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              tags
-          
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ExcelHelper/">ExcelHelper</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/08/25/C#-Excel导出/#more">浪一波 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-C#-SqlHelper" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/08/25/C#-SqlHelper/" class="article-date">
-      <time datetime="2017-08-25T04:16:46.000Z" itemprop="datePublished">2017-08-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/25/C#-SqlHelper/">C#-SqlHelper</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              tags
-          
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SqlHelper/">SqlHelper</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/08/25/C#-SqlHelper/#more">浪一波 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-权限树的使用" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/08/25/权限树的使用/" class="article-date">
-      <time datetime="2017-08-25T04:16:46.000Z" itemprop="datePublished">2017-08-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/25/权限树的使用/">Ȩ������ʹ��</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              tags
-          
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/E����/">Ȩ����</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/08/25/权限树的使用/#more">浪一波 >></a>
-        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -789,6 +658,69 @@
 
 
   
+    <article id="post-WinFprm中DataGridView控件的使用" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/08/02/WinFprm中DataGridView控件的使用/" class="article-date">
+      <time datetime="2017-08-02T06:01:56.000Z" itemprop="datePublished">2017-08-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/02/WinFprm中DataGridView控件的使用/">WinFprm中DataGridView控件的使用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              tags/随笔
+          
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WinForm/">WinForm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/控件/">控件</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2017/08/02/WinFprm中DataGridView控件的使用/#more">浪一波 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-欢迎来到我的博客" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -820,7 +752,7 @@
 </blockquote>
 <h2 id="反馈与建议"><a href="#反馈与建议" class="headerlink" title="反馈与建议"></a>反馈与建议</h2><ul>
 <li>微博：<a href="http://weibo.com/u/5811462452" target="_blank" rel="external">@Microera</a>，<a href="http://weibo.com/u/5811462452" target="_blank" rel="external">@朕封你为妃_</a></li>
-<li>邮箱：<a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#111;&#x3a;&#122;&#101;&#114;&#111;&#x40;&#122;&#x65;&#x72;&#x6f;&#x64;&#101;&#x67;&#x2e;&#99;&#110;">&#122;&#101;&#114;&#111;&#x40;&#122;&#x65;&#x72;&#x6f;&#x64;&#101;&#x67;&#x2e;&#99;&#110;</a></li>
+<li>邮箱：<a href="&#109;&#x61;&#x69;&#108;&#x74;&#111;&#58;&#x7a;&#x65;&#x72;&#x6f;&#64;&#x7a;&#101;&#x72;&#x6f;&#x64;&#x65;&#103;&#x2e;&#99;&#x6e;">&#x7a;&#x65;&#x72;&#x6f;&#64;&#x7a;&#101;&#x72;&#x6f;&#x64;&#x65;&#103;&#x2e;&#99;&#x6e;</a></li>
 <li>群号：512901469[<a href="https://jq.qq.com/?_wv=1027&amp;k=4FIJvv0" target="_blank" rel="external">点我加群</a>]</li>
 </ul>
 
@@ -854,10 +786,6 @@
 
 
   
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
   
 </div>
       <footer id="footer">
