@@ -92,7 +92,7 @@
     <link href="http://yoursite.com/child/2017/08/26/Winfrom-%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <id>http://yoursite.com/child/2017/08/26/Winfrom-全局变量的使用/</id>
     <published>2017-08-26T11:39:23.000Z</published>
-    <updated>2017-08-26T11:40:16.601Z</updated>
+    <updated>2017-08-26T11:57:51.062Z</updated>
     
     <content type="html"><![CDATA[<p> 定义全局变量，这样在任何一个界面都可以获取并使用，最常用的一个事情来说，就是很多页面可能都会获取登陆用户的用户名，主要空可能会添加一个状态栏，显示是谁登陆的，这样我们就可以定义一个全局变量，我是放在了<br>Program，也可以自己定义一个类文件，<br>Program里面定义一个静态，例子如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static string loginname = &quot;&quot;;//全局变量用户名字</div></pre></td></tr></table></figure></p>
 <p>在登录窗口给它赋值，例子如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Program.loginname = ttbusername.Text;//定义全局变量</div></pre></td></tr></table></figure></p>
@@ -101,7 +101,7 @@
     
     <summary type="html">
     
-      &lt;p&gt; 定义全局变量，这样在任何一个界面都可以获取并使用，最常用的一个事情来说，就是很多页面可能都会获取登陆用户的用户名，主要空可能会添加一个状态栏，显示是谁登陆的，这样我们就可以定义一个全局变量，我是放在了&lt;br&gt;Program，也可以自己定义一个类文件，&lt;br&gt;Program
+      tags
     
     </summary>
     
