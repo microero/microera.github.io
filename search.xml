@@ -4,7 +4,7 @@
     
     <entry>
       <title><![CDATA[C#权限树的使用]]></title>
-      <url>/2017/08/26/JAVA/</url>
+      <url>/2017/08/26/C#%E6%9D%83%E9%99%90%E6%A0%91%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
       <content type="html"><![CDATA[<p>我也不知道怎么回事博客就是不行，也不知道怎么了，汉字都不能正常显示！！！！</p>
 <h1 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h1><p>权限加载/权限遍历/权限添加/权限删除</p>
 <h2 id="权限树加载"><a href="#权限树加载" class="headerlink" title="权限树加载"></a>权限树加载</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">trevzqx.Nodes.Clear();//清空树节点</div><div class="line">           setTreeView(trevzqx, 0);//总权限树加载</div><div class="line">           trevzqx.ExpandAll();//展开根节点</div></pre></td></tr></table></figure>
@@ -251,7 +251,7 @@
 </blockquote>
 <h2 id="反馈与建议"><a href="#反馈与建议" class="headerlink" title="反馈与建议"></a>反馈与建议</h2><ul>
 <li>微博：<a href="http://weibo.com/u/5811462452" target="_blank" rel="external">@Microera</a>，<a href="http://weibo.com/u/5811462452" target="_blank" rel="external">@朕封你为妃_</a></li>
-<li>邮箱：<a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#x7a;&#101;&#x72;&#111;&#64;&#x7a;&#x65;&#114;&#111;&#x64;&#101;&#103;&#x2e;&#x63;&#110;">&#x7a;&#101;&#x72;&#111;&#64;&#x7a;&#x65;&#114;&#111;&#x64;&#101;&#103;&#x2e;&#x63;&#110;</a></li>
+<li>邮箱：<a href="&#109;&#97;&#x69;&#108;&#116;&#x6f;&#58;&#122;&#101;&#114;&#111;&#64;&#x7a;&#101;&#114;&#x6f;&#100;&#x65;&#103;&#x2e;&#x63;&#x6e;">&#122;&#101;&#114;&#111;&#64;&#x7a;&#101;&#114;&#x6f;&#100;&#x65;&#103;&#x2e;&#x63;&#x6e;</a></li>
 <li>群号：512901469[<a href="https://jq.qq.com/?_wv=1027&amp;k=4FIJvv0" target="_blank" rel="external">点我加群</a>]</li>
 </ul>
 ]]></content>
