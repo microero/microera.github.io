@@ -92,7 +92,7 @@
     <link href="http://yoursite.com/child/2017/08/25/Winfrom%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/"/>
     <id>http://yoursite.com/child/2017/08/25/Winfrom全局变量/</id>
     <published>2017-08-25T04:16:46.000Z</published>
-    <updated>2017-08-26T11:36:47.997Z</updated>
+    <updated>2017-08-26T11:37:20.619Z</updated>
     
     <content type="html"><![CDATA[<p> ����ȫ�ֱ������������κ�һ�����涼���Ի�ȡ��ʹ�ã���õ�һ��������˵�����Ǻܶ�ҳ�����ܶ�����ȡ��½�û����û�������Ҫ�տ��ܻ�����һ��״̬������ʾ��˭��½�ģ��������ǾͿ��Զ���һ��ȫ�ֱ��������Ƿ�����<br>Program��Ҳ�����Լ�����һ�����ļ���<br>Program���涨��һ����̬���������£�<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static string loginname = &quot;&quot;;//ȫ�ֱ����û�����</div></pre></td></tr></table></figure></p>
 <p>�ڵ�¼���ڸ�����ֵ���������£�<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Program.loginname = ttbusername.Text;//����ȫ�ֱ���</div></pre></td></tr></table></figure></p>
