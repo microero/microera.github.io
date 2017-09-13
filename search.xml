@@ -268,6 +268,35 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Winfrom的TreeView控件数据库绑定]]></title>
+      <url>/2017/08/20/WinFprm%E4%B8%ADTreeView%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BB%91%E5%AE%9A/</url>
+      <content type="html"><![CDATA[<h1 id="Winfrom的TreeView控件数据库绑定"><a href="#Winfrom的TreeView控件数据库绑定" class="headerlink" title="Winfrom的TreeView控件数据库绑定"></a>Winfrom的TreeView控件数据库绑定</h1><p>@()[WinForm|权限树|TreeView]</p>
+<h1 id="绑定TreeView"><a href="#绑定TreeView" class="headerlink" title="绑定TreeView"></a>绑定TreeView</h1><p><strong>绑定TreeView（利用TreeNode）</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">/// &lt;summary&gt;</div><div class="line">/// 绑定TreeView（利用TreeNode）</div><div class="line">/// &lt;/summary&gt;</div><div class="line">/// &lt;param name=&quot;p_Node&quot;&gt;TreeNode（TreeView的一个节点）&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;pid_val&quot;&gt;父id的值&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;id&quot;&gt;数据库 id 字段名&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;pid&quot;&gt;数据库 父id 字段名&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;text&quot;&gt;数据库 文本 字段值&lt;/param&gt;</div><div class="line">protected void Bind_Tv(DataTable dt, TreeNode p_Node, string pid_val, string id, string pid, string text)</div><div class="line">&#123;</div><div class="line">    DataView dv = new DataView(dt);//将DataTable存到DataView中，以便于筛选数据</div><div class="line">    TreeNode tn;//建立TreeView的节点（TreeNode），以便将取出的数据添加到节点中</div><div class="line">    //以下为三元运算符，如果父id为空，则为构建“父id字段 is null”的查询条件，否则构建“父id字段=父id字段值”的查询条件</div><div class="line">    string filter = string.IsNullOrEmpty(pid_val) ? pid + &quot; is null&quot; : string.Format(pid + &quot;=&apos;&#123;0&#125;&apos;&quot;, pid_val);</div><div class="line">    dv.RowFilter = filter;//利用DataView将数据进行筛选，选出相同 父id值 的数据</div><div class="line">    foreach (DataRowView row in dv)</div><div class="line">    &#123;</div><div class="line">        tn = new TreeNode();//建立一个新节点（学名叫：一个实例）</div><div class="line">        if (p_Node == null)//如果为根节点</div><div class="line">        &#123;</div><div class="line">            tn.Name = row[id].ToString();//节点的Value值，一般为数据库的id值</div><div class="line">            tn.Text = row[text].ToString();//节点的Text，节点的文本显示</div><div class="line">            TreeView1.Nodes.Add(tn);//将该节点加入到TreeView中</div><div class="line">            Bind_Tv(dt, tn, tn.Name, id, pid, text);//递归（反复调用这个方法，直到把数据取完为止）</div><div class="line">        &#125;</div><div class="line">        else//如果不是根节点</div><div class="line">        &#123;</div><div class="line">            tn.Name = row[id].ToString();//节点Value值</div><div class="line">            tn.Text = row[text].ToString();//节点Text值</div><div class="line">            p_Node.Nodes.Add(tn);//该节点加入到上级节点中</div><div class="line">            Bind_Tv(dt, tn, tn.Name, id, pid, text);//递归</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>绑定TreeView（利用TreeNodeCollection）</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">/// &lt;summary&gt;</div><div class="line">/// 绑定TreeView（利用TreeNodeCollection）</div><div class="line">/// &lt;/summary&gt;</div><div class="line">/// &lt;param name=&quot;tnc&quot;&gt;TreeNodeCollection（TreeView的节点集合）&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;pid_val&quot;&gt;父id的值&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;id&quot;&gt;数据库 id 字段名&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;pid&quot;&gt;数据库 父id 字段名&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;text&quot;&gt;数据库 文本 字段值&lt;/param&gt;</div><div class="line">private void Bind_Tv(DataTable dt, TreeNodeCollection tnc, string pid_val, string id, string pid, string text)</div><div class="line">&#123;</div><div class="line">    DataView dv = new DataView(dt);//将DataTable存到DataView中，以便于筛选数据</div><div class="line">    TreeNode tn;//建立TreeView的节点（TreeNode），以便将取出的数据添加到节点中</div><div class="line">    //以下为三元运算符，如果父id为空，则为构建“父id字段 is null”的查询条件，否则构建“父id字段=父id字段值”的查询条件</div><div class="line">    string filter = string.IsNullOrEmpty(pid_val) ? pid + &quot; is null&quot; : string.Format(pid + &quot;=&apos;&#123;0&#125;&apos;&quot;, pid_val);</div><div class="line">    dv.RowFilter = filter;//利用DataView将数据进行筛选，选出相同 父id值 的数据</div><div class="line">    foreach (DataRowView drv in dv)</div><div class="line">    &#123;</div><div class="line">        tn = new TreeNode();//建立一个新节点（学名叫：一个实例）</div><div class="line">        tn.Name = drv[id].ToString();//节点的Value值，一般为数据库的id值</div><div class="line">        tn.Text = drv[text].ToString();//节点的Text，节点的文本显示</div><div class="line">        tnc.Add(tn);//将该节点加入到TreeNodeCollection（节点集合）中</div><div class="line">        Bind_Tv(dt, tn.Nodes, tn.Name, id, pid, text);//递归（反复调用这个方法，直到把数据取完为止）</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">#endregion</div></pre></td></tr></table></figure></p>
+<hr>
+<blockquote>
+<p>更多资料请加群获取</p>
+</blockquote>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> C# </tag>
+            
+            <tag> 控件 </tag>
+            
+            <tag> WinForm </tag>
+            
+            <tag> 权限树 </tag>
+            
+            <tag> TreeView控件 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Winfrom的TreeView控件常用属性]]></title>
       <url>/2017/08/20/WinFprm%E4%B8%ADTreeView%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7/</url>
       <content type="html"><![CDATA[<h1 id="Winfrom的TreeView控件常用属性"><a href="#Winfrom的TreeView控件常用属性" class="headerlink" title="Winfrom的TreeView控件常用属性"></a>Winfrom的TreeView控件常用属性</h1><p>@()[WinForm|权限树|TreeView]</p>
@@ -312,42 +341,13 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Winfrom的TreeView控件数据库绑定]]></title>
-      <url>/2017/08/20/WinFprm%E4%B8%ADTreeView%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BB%91%E5%AE%9A/</url>
-      <content type="html"><![CDATA[<h1 id="Winfrom的TreeView控件数据库绑定"><a href="#Winfrom的TreeView控件数据库绑定" class="headerlink" title="Winfrom的TreeView控件数据库绑定"></a>Winfrom的TreeView控件数据库绑定</h1><p>@()[WinForm|权限树|TreeView]</p>
-<h1 id="绑定TreeView"><a href="#绑定TreeView" class="headerlink" title="绑定TreeView"></a>绑定TreeView</h1><p><strong>绑定TreeView（利用TreeNode）</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">/// &lt;summary&gt;</div><div class="line">/// 绑定TreeView（利用TreeNode）</div><div class="line">/// &lt;/summary&gt;</div><div class="line">/// &lt;param name=&quot;p_Node&quot;&gt;TreeNode（TreeView的一个节点）&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;pid_val&quot;&gt;父id的值&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;id&quot;&gt;数据库 id 字段名&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;pid&quot;&gt;数据库 父id 字段名&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;text&quot;&gt;数据库 文本 字段值&lt;/param&gt;</div><div class="line">protected void Bind_Tv(DataTable dt, TreeNode p_Node, string pid_val, string id, string pid, string text)</div><div class="line">&#123;</div><div class="line">    DataView dv = new DataView(dt);//将DataTable存到DataView中，以便于筛选数据</div><div class="line">    TreeNode tn;//建立TreeView的节点（TreeNode），以便将取出的数据添加到节点中</div><div class="line">    //以下为三元运算符，如果父id为空，则为构建“父id字段 is null”的查询条件，否则构建“父id字段=父id字段值”的查询条件</div><div class="line">    string filter = string.IsNullOrEmpty(pid_val) ? pid + &quot; is null&quot; : string.Format(pid + &quot;=&apos;&#123;0&#125;&apos;&quot;, pid_val);</div><div class="line">    dv.RowFilter = filter;//利用DataView将数据进行筛选，选出相同 父id值 的数据</div><div class="line">    foreach (DataRowView row in dv)</div><div class="line">    &#123;</div><div class="line">        tn = new TreeNode();//建立一个新节点（学名叫：一个实例）</div><div class="line">        if (p_Node == null)//如果为根节点</div><div class="line">        &#123;</div><div class="line">            tn.Name = row[id].ToString();//节点的Value值，一般为数据库的id值</div><div class="line">            tn.Text = row[text].ToString();//节点的Text，节点的文本显示</div><div class="line">            TreeView1.Nodes.Add(tn);//将该节点加入到TreeView中</div><div class="line">            Bind_Tv(dt, tn, tn.Name, id, pid, text);//递归（反复调用这个方法，直到把数据取完为止）</div><div class="line">        &#125;</div><div class="line">        else//如果不是根节点</div><div class="line">        &#123;</div><div class="line">            tn.Name = row[id].ToString();//节点Value值</div><div class="line">            tn.Text = row[text].ToString();//节点Text值</div><div class="line">            p_Node.Nodes.Add(tn);//该节点加入到上级节点中</div><div class="line">            Bind_Tv(dt, tn, tn.Name, id, pid, text);//递归</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>绑定TreeView（利用TreeNodeCollection）</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">/// &lt;summary&gt;</div><div class="line">/// 绑定TreeView（利用TreeNodeCollection）</div><div class="line">/// &lt;/summary&gt;</div><div class="line">/// &lt;param name=&quot;tnc&quot;&gt;TreeNodeCollection（TreeView的节点集合）&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;pid_val&quot;&gt;父id的值&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;id&quot;&gt;数据库 id 字段名&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;pid&quot;&gt;数据库 父id 字段名&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;text&quot;&gt;数据库 文本 字段值&lt;/param&gt;</div><div class="line">private void Bind_Tv(DataTable dt, TreeNodeCollection tnc, string pid_val, string id, string pid, string text)</div><div class="line">&#123;</div><div class="line">    DataView dv = new DataView(dt);//将DataTable存到DataView中，以便于筛选数据</div><div class="line">    TreeNode tn;//建立TreeView的节点（TreeNode），以便将取出的数据添加到节点中</div><div class="line">    //以下为三元运算符，如果父id为空，则为构建“父id字段 is null”的查询条件，否则构建“父id字段=父id字段值”的查询条件</div><div class="line">    string filter = string.IsNullOrEmpty(pid_val) ? pid + &quot; is null&quot; : string.Format(pid + &quot;=&apos;&#123;0&#125;&apos;&quot;, pid_val);</div><div class="line">    dv.RowFilter = filter;//利用DataView将数据进行筛选，选出相同 父id值 的数据</div><div class="line">    foreach (DataRowView drv in dv)</div><div class="line">    &#123;</div><div class="line">        tn = new TreeNode();//建立一个新节点（学名叫：一个实例）</div><div class="line">        tn.Name = drv[id].ToString();//节点的Value值，一般为数据库的id值</div><div class="line">        tn.Text = drv[text].ToString();//节点的Text，节点的文本显示</div><div class="line">        tnc.Add(tn);//将该节点加入到TreeNodeCollection（节点集合）中</div><div class="line">        Bind_Tv(dt, tn.Nodes, tn.Name, id, pid, text);//递归（反复调用这个方法，直到把数据取完为止）</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">#endregion</div></pre></td></tr></table></figure></p>
-<hr>
-<blockquote>
-<p>更多资料请加群获取</p>
-</blockquote>
-]]></content>
-      
-        
-        <tags>
-            
-            <tag> C# </tag>
-            
-            <tag> 控件 </tag>
-            
-            <tag> WinForm </tag>
-            
-            <tag> 权限树 </tag>
-            
-            <tag> TreeView控件 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[欢迎来到我的个人博客]]></title>
       <url>/2017/08/02/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
       <content type="html"><![CDATA[<blockquote><p>本博客只是用来记录个人在和代码打交道的生涯中碰到的一些问题以及解决方案，还有一些无意中发现的小技巧等等，供以后用来查阅。</p>
 </blockquote>
 <h2 id="反馈与建议"><a href="#反馈与建议" class="headerlink" title="反馈与建议"></a>反馈与建议</h2><ul>
 <li>微博：<a href="http://weibo.com/u/5811462452" target="_blank" rel="external">@Microera</a>，<a href="http://weibo.com/u/5811462452" target="_blank" rel="external">@朕封你为妃_</a></li>
-<li>邮箱：<a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#111;&#x3a;&#122;&#101;&#x72;&#x6f;&#64;&#x7a;&#x65;&#114;&#111;&#100;&#x65;&#103;&#x2e;&#x63;&#110;">&#122;&#101;&#x72;&#x6f;&#64;&#x7a;&#x65;&#114;&#111;&#100;&#x65;&#103;&#x2e;&#x63;&#110;</a></li>
+<li>邮箱：<a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#111;&#x3a;&#x7a;&#101;&#114;&#111;&#x40;&#122;&#x65;&#114;&#111;&#100;&#101;&#103;&#x2e;&#x63;&#110;">&#x7a;&#101;&#114;&#111;&#x40;&#122;&#x65;&#114;&#111;&#100;&#101;&#103;&#x2e;&#x63;&#110;</a></li>
 <li>群号：512901469[<a href="https://jq.qq.com/?_wv=1027&amp;k=4FIJvv0" target="_blank" rel="external">点我加群</a>]</li>
 </ul>
 ]]></content>
@@ -406,6 +406,19 @@
   
     
     <entry>
+      <title><![CDATA[欢迎来到我的个人博客]]></title>
+      <url>/Home/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2.html</url>
+      <content type="html"><![CDATA[<blockquote><p>本博客只是用来记录个人在和代码打交道的生涯中碰到的一些问题以及解决方案，还有一些无意中发现的小技巧等等，供以后用来查阅。</p>
+</blockquote>
+<h2 id="反馈与建议"><a href="#反馈与建议" class="headerlink" title="反馈与建议"></a>反馈与建议</h2><ul>
+<li>微博：<a href="http://weibo.com/u/5811462452" target="_blank" rel="external">@Microera</a>，<a href="http://weibo.com/u/5811462452" target="_blank" rel="external">@朕封你为妃_</a></li>
+<li>邮箱：<a href="&#109;&#x61;&#105;&#108;&#116;&#x6f;&#x3a;&#x7a;&#101;&#x72;&#111;&#x40;&#122;&#x65;&#x72;&#x6f;&#100;&#x65;&#103;&#x2e;&#99;&#110;">&#x7a;&#101;&#x72;&#111;&#x40;&#122;&#x65;&#x72;&#x6f;&#100;&#x65;&#103;&#x2e;&#99;&#110;</a></li>
+<li>群号：512901469[<a href="https://jq.qq.com/?_wv=1027&amp;k=4FIJvv0" target="_blank" rel="external">点我加群</a>]</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[WinFprm中DataGridView控件的使用]]></title>
       <url>/Home/WinFprm%E4%B8%ADDataGridView%E6%8E%A7%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8.html</url>
       <content type="html"><![CDATA[<p>##datagridview控件使用前言</p>
@@ -441,29 +454,10 @@
 </blockquote>
 <h2 id="反馈与建议"><a href="#反馈与建议" class="headerlink" title="反馈与建议"></a>反馈与建议</h2><ul>
 <li>微博：<a href="http://weibo.com/u/5811462452" target="_blank" rel="external">@Microera</a>，<a href="http://weibo.com/u/5811462452" target="_blank" rel="external">@朕封你为妃_</a></li>
-<li>邮箱：<a href="&#109;&#97;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x7a;&#101;&#x72;&#111;&#64;&#x7a;&#x65;&#114;&#111;&#x64;&#x65;&#x67;&#46;&#x63;&#x6e;">&#x7a;&#101;&#x72;&#111;&#64;&#x7a;&#x65;&#114;&#111;&#x64;&#x65;&#x67;&#46;&#x63;&#x6e;</a></li>
+<li>邮箱：<a href="&#x6d;&#x61;&#x69;&#108;&#116;&#111;&#x3a;&#122;&#x65;&#114;&#x6f;&#64;&#122;&#101;&#x72;&#111;&#100;&#x65;&#103;&#46;&#99;&#x6e;">&#122;&#x65;&#114;&#x6f;&#64;&#122;&#101;&#x72;&#111;&#100;&#x65;&#103;&#46;&#99;&#x6e;</a></li>
 <li>群号：512901469[<a href="%3Ca%20target=%22_blank%22%20href=%22//shang.qq.com/wpa/qunwpa?idkey=fb02ed0220136119afe3c315c1c43e228ad7b5fa3ba1ecc9cf714091d870f05e%22%3E%3Cimg%20border=%220%22%20src=%22//pub.idqqimg.com/wpa/images/group.png%22%20alt=%22Blog%E7%A4%BE%E4%BA%A4%E7%BE%A4%22%20title=%22Blog%E7%A4%BE%E4%BA%A4%E7%BE%A4%22%3E%3C/a%3E">点我加群</a>]</li>
 </ul>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[欢迎来到我的个人博客]]></title>
-      <url>/Home/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2.html</url>
-      <content type="html"><![CDATA[<blockquote><p>本博客只是用来记录个人在和代码打交道的生涯中碰到的一些问题以及解决方案，还有一些无意中发现的小技巧等等，供以后用来查阅。</p>
-</blockquote>
-<h2 id="反馈与建议"><a href="#反馈与建议" class="headerlink" title="反馈与建议"></a>反馈与建议</h2><ul>
-<li>微博：<a href="http://weibo.com/u/5811462452" target="_blank" rel="external">@Microera</a>，<a href="http://weibo.com/u/5811462452" target="_blank" rel="external">@朕封你为妃_</a></li>
-<li>邮箱：<a href="&#109;&#97;&#x69;&#x6c;&#x74;&#111;&#x3a;&#122;&#101;&#x72;&#111;&#64;&#x7a;&#101;&#114;&#111;&#100;&#101;&#x67;&#x2e;&#x63;&#x6e;">&#122;&#101;&#x72;&#111;&#64;&#x7a;&#101;&#114;&#111;&#100;&#101;&#x67;&#x2e;&#x63;&#x6e;</a></li>
-<li>群号：512901469[<a href="https://jq.qq.com/?_wv=1027&amp;k=4FIJvv0" target="_blank" rel="external">点我加群</a>]</li>
-</ul>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[archives]]></title>
-      <url>/archives/index.html</url>
-      <content type="html"></content>
     </entry>
     
     <entry>
@@ -473,10 +467,16 @@
 </blockquote>
 <h2 id="反馈与建议"><a href="#反馈与建议" class="headerlink" title="反馈与建议"></a>反馈与建议</h2><ul>
 <li>微博：<a href="http://weibo.com/u/5811462452" target="_blank" rel="external">@Microera</a>，<a href="http://weibo.com/u/5811462452" target="_blank" rel="external">@朕封你为妃_</a></li>
-<li>邮箱：<a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#x3a;&#122;&#x65;&#114;&#111;&#64;&#x7a;&#x65;&#x72;&#x6f;&#x64;&#101;&#103;&#46;&#x63;&#110;">&#122;&#x65;&#114;&#111;&#64;&#x7a;&#x65;&#x72;&#x6f;&#x64;&#101;&#103;&#46;&#x63;&#110;</a></li>
+<li>邮箱：<a href="&#x6d;&#97;&#x69;&#108;&#116;&#111;&#x3a;&#122;&#x65;&#x72;&#x6f;&#x40;&#x7a;&#101;&#x72;&#x6f;&#x64;&#101;&#103;&#46;&#99;&#110;">&#122;&#x65;&#x72;&#x6f;&#x40;&#x7a;&#101;&#x72;&#x6f;&#x64;&#101;&#103;&#46;&#99;&#110;</a></li>
 <li>群号：512901469[<a href="https://jq.qq.com/?_wv=1027&amp;k=4FIJvv0" target="_blank" rel="external">点我加群</a>]</li>
 </ul>
 ]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[archives]]></title>
+      <url>/archives/index.html</url>
+      <content type="html"></content>
     </entry>
     
     <entry>
